@@ -40,6 +40,19 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(255, 26, 26, 0.7);
         }
+        .download-btn {
+            background: linear-gradient(45deg, #ff3333, #cc0000);
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.25rem;
+            text-shadow: 0 0 5px rgba(255, 26, 26, 0.8);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 26, 26, 0.9);
+        }
         nav a {
             transition: color 0.3s ease, transform 0.3s ease;
         }
@@ -50,15 +63,15 @@
         header, section, footer {
             position: relative;
             z-index: 2;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(20, 0, 0, 0.8)); /* Плавный градиент */
+            background: radial-gradient(circle at center, rgba(20, 0, 0, 0.8), rgba(0, 0, 0, 0.7)); /* Радиальный градиент */
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeIn 1s ease forwards;
+            animation: fadeIn 1.5s ease forwards; /* Плавная анимация */
         }
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.4s; }
-        section:nth-child(4) { animation-delay: 0.6s; }
-        footer { animation-delay: 0.8s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.9s; }
+        footer { animation-delay: 1.2s; }
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -70,6 +83,15 @@
             font-size: 1.5rem;
             color: #ff1a1a;
             text-shadow: 0 0 5px #ff1a1a;
+        }
+        .gallery img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #ff1a1a;
+            border-radius: 8px;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 26, 26, 0.7);
         }
     </style>
 </head>
@@ -87,26 +109,31 @@
 
     <section id="hero" class="h-screen flex items-center justify-center text-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-5xl md:text-7xl mb-6">NightmareCraft</h2>
-            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Погрузись в ужасающий мир Minecraft с нашей хоррор-сборкой, где каждый шаг может стать последним!</p>
-            <a href="https://mega.nz/folder/yAUVABKT#GB0x8LRUySRi6rUx6WoAtw" class="btn text-white text-lg">Скачать сборку</a>
+            <h2 class="text-5xl md:text-7xl mb-12">NightmareCraft</h2>
+            <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">Погрузись в ужасающий мир Minecraft с нашей хоррор-сборкой, где каждый шаг может стать последним!</p>
+            <a href="#download" class="btn text-white text-lg">Скачать сборку</a>
         </div>
     </section>
 
     <section id="about" class="py-16">
         <div class="container mx-auto px-4">
             <h3 class="text-3xl md:text-4xl mb-8 text-center">О NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">NightmareCraft - это хоррор-сборка для Minecraft, которая превратит твою игру в настоящий кошмар. Версия 1.0 включает всё, чтобы ты дрожал от ужаса!</p>
-            <h4 class="text-2xl mb-4 text-center">Что в версии 1.0:</h4>
+            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">NightmareCraft - это хоррор-сборка для Minecraft, которая превратит твою игру в настоящий кошмар. Версия 1.2.7 включает всё, чтобы ты дрожал от ужаса, с улучшенной графикой и новыми пугающими механиками!</p>
+            <h4 class="text-2xl mb-4 text-center">Что в версии 1.2.7:</h4>
             <ul class="list-disc list-inside text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-                <li><strong>Мрачные текстуры</strong>: Переработанные блоки и предметы с жуткими деталями — от кровавых пятен до потрескавшихся стен.</li>
-                <li><strong>Кастомные мобы</strong>: Новые враги, такие как Теневой Сталкер и Проклятый Скелет, с уникальными атаками и звуками.</li>
-                <li><strong>Атмосферные шейдеры</strong>: Туман, динамические тени и кроваво-красное освещение для пугающей атмосферы.</li>
-                <li><strong>Сюжетные квесты</strong>: Исследуй заброшенные деревни и подземелья с хоррор-историями, полными загадок.</li>
-                <li><strong>Звуковое сопровождение</strong>: Жуткие звуки шагов, шепота и скрипов, которые заставят тебя оглядываться.</li>
-                <li><strong>Оптимизация</strong>: Поддержка Minecraft 1.16.5 и выше, работает даже на слабых ПК.</li>
+                <li><strong>Мрачные текстуры</strong>: Переработанные блоки и предметы с жуткими деталями — от кровавых пятен до потрескавшихся стен, с улучшенной детализацией для версии 1.2.7.</li>
+                <li><strong>Кастомные мобы</strong>: Новые враги, такие как Теневой Сталкер, Проклятый Скелет и призрачные сущности, с уникальными атаками, звуками и улучшенным ИИ.</li>
+                <li><strong>Атмосферные шейдеры</strong>: Густой туман, динамические тени, кроваво-красное освещение и новые эффекты глубины для пугающей атмосферы.</li>
+                <li><strong>Сюжетные квесты</strong>: Исследуй заброшенные деревни, проклятые подземелья и таинственные храмы с хоррор-историями, полными загадок и ловушек.</li>
+                <li><strong>Звуковое сопровождение</strong>: Жуткие звуки шагов, шепота, скрипов и новых амбиентных эффектов, которые заставят тебя оглядываться.</li>
+                <li><strong>Новые механики</strong>: Система страха, которая влияет на игрока (например, дрожание экрана при встрече с мобами), и динамические события, такие как случайные появления врагов.</li>
+                <li><strong>Оптимизация</strong>: Поддержка Minecraft 1.16.5 и выше, работает даже на слабых ПК, с улучшенной производительностью в версии 1.2.7.</li>
             </ul>
-            <p class="text-lg md:text-xl max-w-3xl mx-auto">Эта сборка идеально подходит для тех, кто хочет испытать Minecraft в новом, пугающем свете. Готов ли ты выжить в NightmareCraft?</p>
+            <div class="gallery grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <img src="./img1.png" alt="NightmareCraft Screenshot 1" class="w-full h-auto rounded-lg">
+                <img src="./img2.png" alt="NightmareCraft Screenshot 2" class="w-full h-auto rounded-lg">
+                <img src="./img3.png" alt="NightmareCraft Screenshot 3" class="w-full h-auto rounded-lg">
+            </div>
         </div>
     </section>
 
@@ -114,8 +141,18 @@
         <div class="container mx-auto px-4">
             <h3 class="text-3xl md:text-4xl mb-8">Скачай NightmareCraft</h3>
             <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Готов к кошмару? Нажми кнопку ниже, чтобы открыть папку с нашей сборкой!</p>
-            <a href="https://mega.nz/folder/yAUVABKT#GB0x8LRUySRi6rUx6WoAtw">Скачать сборку (ZIP)</a>
+            <a href="https://drive.google.com/drive/folders/1cV1kxJI-lz5S697ls27Tz0u_DOJFF9qO?usp=sharing" class="download-btn text-white">Скачать сборку (ZIP)</a>
             <p class="password-text mt-4">Пароль от архива: <strong>1337</strong></p>
+            <div class="text-lg md:text-xl mt-6 max-w-2xl mx-auto">
+                <h4 class="text-xl mb-4">Инструкция по скачиванию:</h4>
+                <ol class="list-decimal list-inside text-left">
+                    <li>Нажми на кнопку «Скачать сборку» выше — она откроет папку на Google Drive в твоём браузере.</li>
+                    <li>В папке найди файл <strong>NightmareCraft</strong> с расширением .zip. Щёлкни по нему правой кнопкой мыши и выбери «Скачать». Файл начнёт загружаться.</li>
+                    <li>После загрузки найди ZIP-архив в папке «Загрузки» или на рабочем столе (или там, куда ты сохраняешь файлы).</li>
+                    <li>Щёлкни правой кнопкой по архиву, выбери «Извлечь всё» (или используй WinRAR, 7-Zip). Введи пароль <strong>1337</strong>, когда программа его запросит, чтобы разархивировать файлы.</li>
+                    <li>В разархивированной папке найди файл <strong>setup-mode v1.2.7</strong>. Дважды щёлкни по нему, чтобы начать установку, и следуй инструкциям на экране для настройки сборки в Minecraft.</li>
+                </ol>
+            </div>
         </div>
     </section>
 
@@ -147,4 +184,3 @@
     </script>
 </body>
 </html>
-
