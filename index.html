@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NightmareCraft - Хоррор сборка для Minecraft</title>
+    <title>NightmareCraft - Хоррор в Minecraft</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -11,7 +11,7 @@
             font-family: 'Roboto', sans-serif;
             background: url('https://img3.akspic.ru/previews/2/5/3/8/2/128352/128352-videoigra-okruzhayushchaya_sreda-televideniye-les-utro-x750.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-color: #0a0a0a; /* Темный резервный фон */
+            background-color: #0a0a0a;
             position: relative;
             color: #e0e0e0;
         }
@@ -22,12 +22,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8); /* Затемнение */
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1;
         }
         h1, h2, h3, h4 {
             font-family: 'Nosifer', cursive;
-            color: #ff1a1a; /* Глубокий красный */
+            color: #ff1a1a;
             text-shadow: 0 0 8px rgba(255, 26, 26, 0.5);
         }
         .btn {
@@ -63,10 +63,10 @@
         header, section, footer {
             position: relative;
             z-index: 2;
-            background: radial-gradient(circle at center, rgba(20, 0, 0, 0.8), rgba(0, 0, 0, 0.7)); /* Радиальный градиент */
+            background: radial-gradient(circle at center, rgba(20, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeIn 1.5s ease forwards; /* Плавная анимация */
+            animation: fadeIn 1.5s ease forwards;
         }
         section:nth-child(2) { animation-delay: 0.3s; }
         section:nth-child(3) { animation-delay: 0.6s; }
@@ -84,15 +84,43 @@
             color: #ff1a1a;
             text-shadow: 0 0 5px #ff1a1a;
         }
-        .gallery img {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-images img {
+            width: 100%;
+            height: auto;
             border: 2px solid #ff1a1a;
             border-radius: 8px;
+            flex: 0 0 100%;
         }
-        .gallery img:hover {
+        .carousel-images img:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(255, 26, 26, 0.7);
         }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 26, 26, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 3;
+        }
+        .carousel-btn:hover {
+            background: rgba(255, 26, 26, 1);
+        }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
     </style>
 </head>
 <body>
@@ -110,29 +138,32 @@
     <section id="hero" class="h-screen flex items-center justify-center text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-5xl md:text-7xl mb-12">NightmareCraft</h2>
-            <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">Погрузись в ужасающий мир Minecraft с нашей хоррор-сборкой, где каждый шаг может стать последним!</p>
+            <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">Шагни в тёмный лес Minecraft, где за каждым деревом поджидает кошмар. Готов испытать настоящий ужас?</p>
             <a href="#download" class="btn text-white text-lg">Скачать сборку</a>
         </div>
     </section>
 
     <section id="about" class="py-16">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl md:text-4xl mb-8 text-center">О NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">NightmareCraft - это хоррор-сборка для Minecraft, которая превратит твою игру в настоящий кошмар. Версия 1.2.7 включает всё, чтобы ты дрожал от ужаса, с улучшенной графикой и новыми пугающими механиками!</p>
+            <h3 class="text-3xl md:text-4xl mb-8 text-center">Погрузись в NightmareCraft</h3>
+            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">NightmareCraft — это билет в мир страха и адреналина! Версия 1.2.7 превращает Minecraft в жуткое приключение, от которого кровь стынет в жилах.</p>
             <h4 class="text-2xl mb-4 text-center">Что в версии 1.2.7:</h4>
             <ul class="list-disc list-inside text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-                <li><strong>Мрачные текстуры</strong>: Переработанные блоки и предметы с жуткими деталями — от кровавых пятен до потрескавшихся стен, с улучшенной детализацией для версии 1.2.7.</li>
-                <li><strong>Кастомные мобы</strong>: Новые враги, такие как Теневой Сталкер, Проклятый Скелет и призрачные сущности, с уникальными атаками, звуками и улучшенным ИИ.</li>
-                <li><strong>Атмосферные шейдеры</strong>: Густой туман, динамические тени, кроваво-красное освещение и новые эффекты глубины для пугающей атмосферы.</li>
-                <li><strong>Сюжетные квесты</strong>: Исследуй заброшенные деревни, проклятые подземелья и таинственные храмы с хоррор-историями, полными загадок и ловушек.</li>
-                <li><strong>Звуковое сопровождение</strong>: Жуткие звуки шагов, шепота, скрипов и новых амбиентных эффектов, которые заставят тебя оглядываться.</li>
-                <li><strong>Новые механики</strong>: Система страха, которая влияет на игрока (например, дрожание экрана при встрече с мобами), и динамические события, такие как случайные появления врагов.</li>
-                <li><strong>Оптимизация</strong>: Поддержка Minecraft 1.16.5 и выше, работает даже на слабых ПК, с улучшенной производительностью в версии 1.2.7.</li>
+                <li><strong>Жуткие текстуры</strong>: Кровавые пятна, треснувшие стены и мрак, который пробирает до костей.</li>
+                <li><strong>Страшные мобы</strong>: Теневой Сталкер и призрачные твари с пугающим ИИ.</li>
+                <li><strong>Шейдеры</strong>: Густой туман и кроваво-красный свет для полной атмосферы ужаса.</li>
+                <li><strong>Квесты</strong>: Заброшенные деревни и подземелья с ловушками и мрачной историей.</li>
+                <li><strong>Звуки</strong>: Шёпот, скрипы и шаги, от которых сердце замирает.</li>
+                <li><strong>Оптимизация</strong>: Летает на любом ПК с Minecraft 1.16.5 и выше.</li>
             </ul>
-            <div class="gallery grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-                <img src="./img1.png" alt="NightmareCraft Screenshot 1" class="w-full h-auto rounded-lg">
-                <img src="./img2.png" alt="NightmareCraft Screenshot 2" class="w-full h-auto rounded-lg">
-                <img src="./img3.png" alt="NightmareCraft Screenshot 3" class="w-full h-auto rounded-lg">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="./img1.png" alt="NightmareCraft Screenshot 1">
+                    <img src="./img2.png" alt="NightmareCraft Screenshot 2">
+                    <img src="./img3.png" alt="NightmareCraft Screenshot 3">
+                </div>
+                <button class="carousel-btn prev">&larr;</button>
+                <button class="carousel-btn next">&rarr;</button>
             </div>
         </div>
     </section>
@@ -140,17 +171,17 @@
     <section id="download" class="py-16 text-center">
         <div class="container mx-auto px-4">
             <h3 class="text-3xl md:text-4xl mb-8">Скачай NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Готов к кошмару? Нажми кнопку ниже, чтобы открыть папку с нашей сборкой!</p>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Хватит духу? Жми кнопку и погружайся в кошмар!</p>
             <a href="https://drive.google.com/drive/folders/1cV1kxJI-lz5S697ls27Tz0u_DOJFF9qO?usp=sharing" class="download-btn text-white">Скачать сборку (ZIP)</a>
             <p class="password-text mt-4">Пароль от архива: <strong>1337</strong></p>
             <div class="text-lg md:text-xl mt-6 max-w-2xl mx-auto">
-                <h4 class="text-xl mb-4">Инструкция по скачиванию:</h4>
+                <h4 class="text-xl mb-4">Как установить:</h4>
                 <ol class="list-decimal list-inside text-left">
-                    <li>Нажми на кнопку «Скачать сборку» выше — она откроет папку на Google Drive в твоём браузере.</li>
-                    <li>В папке найди файл <strong>NightmareCraft</strong> с расширением .zip. Щёлкни по нему правой кнопкой мыши и выбери «Скачать». Файл начнёт загружаться.</li>
-                    <li>После загрузки найди ZIP-архив в папке «Загрузки» или на рабочем столе (или там, куда ты сохраняешь файлы).</li>
-                    <li>Щёлкни правой кнопкой по архиву, выбери «Извлечь всё» (или используй WinRAR, 7-Zip). Введи пароль <strong>1337</strong>, когда программа его запросит, чтобы разархивировать файлы.</li>
-                    <li>В разархивированной папке найди файл <strong>setup-mode v1.2.7</strong>. Дважды щёлкни по нему, чтобы начать установку, и следуй инструкциям на экране для настройки сборки в Minecraft.</li>
+                    <li>Кликни на кнопку выше — попадёшь в папку на Google Drive.</li>
+                    <li>Найди файл <strong>NightmareCraft.zip</strong>, щёлкни правой кнопкой и выбери «Скачать». Загрузка начнётся автоматически.</li>
+                    <li>Открой папку «Загрузки» (или куда сохраняешь файлы) и найди скачанный архив.</li>
+                    <li>Кликни правой кнопкой по архиву, выбери «Извлечь всё» (или открой в WinRAR/7-Zip). Введи пароль <strong>1337</strong> для разархивирования.</li>
+                    <li>В папке найди <strong>setup-mode v1.2.7</strong>, дважды щёлкни и следуй подсказкам, чтобы установить сборку.</li>
                 </ol>
             </div>
         </div>
@@ -159,10 +190,24 @@
     <section id="contact" class="py-16">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-8">Связаться с нами</h3>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Есть вопросы или предложения? Пиши нам!</p>
-            <div class="flex justify-center space-x-6">
-                <a href="mailto:support@nightmarecraft.com" class="text-lg text-red-500 hover:text-red-300">support@nightmarecraft.com</a>
-                <a href="https://discord.gg/nightmarecraft" class="text-lg text-red-500 hover:text-red-300">Discord</a>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Столкнулся с проблемой или хочешь предложить идею? Пиши нам, мы всегда на связи!</p>
+            <div class="flex justify-center flex-wrap gap-6">
+                <a href="mailto:support@nightmarecraft.com" class="text-lg text-red-500 hover:text-red-300 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5z"/></svg>
+                    support@nightmarecraft.com
+                </a>
+                <a href="https://discord.gg/nightmarecraft" class="text-lg text-red-500 hover:text-red-300 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20.3 4.7A17.8 17.8 0 0012 2a17.8 17.8 0 00-8.3 2.7C1.4 7.3 0 10.7 0 14.5c0 2.8 1.3 5.4 3.5 7.2l-.6 2.2c-.2.7.5 1.3 1.2 1.1l2.4-.9c1 .3 2 .5 3.1.5 3.8 0 7.2-1.4 9.8-3.8 2.3-2.6 3.5-6 3.5-9.8 0-3.8-1.4-7.2-3.8-9.8zm-3.4 14.5c-.6.8-1.7 1.2-3 1.2l-1.4.5c-.3.1-.6-.2-.5-.5l.3-1.1c-1.1-.3-2.1-.8-3-1.5l-.2-.2c-.2-.2-.1-.5.1-.6l.7-.4c.4-.2.8-.1 1 .2.8.9 1.8 1.5 3 1.5 1.7 0 3-.9 3-2s-1.3-2-3-2c-2.2 0-3.3 1.1-3.3 2.2 0 .4.3.7.7.7s.7-.3.7-.7c0-.6.7-1 1.9-1 1 0 1.6.4 1.6 1 0 .7-.5 1.2-1.1 1.5zm-6.7-3.3c-.4.2-.8.1-1-.2l-.7-.4c-.2-.2-.3-.5-.1-.6l.2-.2c.9-.7 1.9-1.2 3-1.5l-.3-1.1c-.1-.3.2-.6.5-.5l1.4.5c1.3 0 2.4-.4 3-1.2.6-.8 1.1-1.9 1.1-3.2 0-1.3-.6-2.2-1.6-2.2-1.2 0-1.9.4-1.9 1 0 .4-.3.7-.7.7s-.7-.3-.7-.7c0-1.1 1.1-2.2 3.3-2.2 1.7 0 3 .9 3 2s-1.3 2-3 2c-1.2 0-2.2-.6-3-1.5l-.3 1.1c-.1.3.2.6.5.5l1.4-.5c1.3 0 2.4.4 3 1.2.6.8 1.1 1.9 1.1 3.2 0 1.3-.6 2.2-1.6 2.2-1.2 0-1.9-.4-1.9-1 0-.4-.3-.7-.7-.7s-.7.3-.7.7c0 1.1 1.1 2.2 3.3 2.2 1.7 0 3-.9 3-2 0-1.3-.6-2.4-1.6-3.2z"/></svg>
+                    Discord
+                </a>
+                <a href="https://t.me/nightmarecraft" class="text-lg text-red-500 hover:text-red-300 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.6 7.7l-1.8 8.5c-.1.6-.5.9-1 .7l-2.7-2-1.3 1.3c-.1.1-.2.2-.4.2l.2-2.8 5.1-4.6c.2-.2-.1-.6-.4-.4l-6.3 4-2.7-2c-.5-.5-.1-1.2.6-.8l10.4 4.1c.4.2.7-.1.6-.5l-2-9.5c-.2-.5.3-.8.6-.5z"/></svg>
+                    Telegram
+                </a>
+                <a href="https://vk.com/nightmarecraft" class="text-lg text-red-500 hover:text-red-300 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3h-1.6c-.5 0-.7-.3-.9-.8-.5-1.5-1.7-2.7-2.7-2.7-.6 0-.7.3-.7.8v2.7c0 .5-.3.8-.7.8h-3.2c-.4 0-.7-.3-.7-.7 0-3.6 2.4-5.5 3.2-6.1 1.5-1 2.4-1.7 2.4-2.8 0-.7-.3-1-.8-1h-1.6c-.5 0-.7.3-.8.8-.3 1.4-1.2 2.7-2.4 3.2v-3.2c0-.5-.3-.8-.7-.8H6.3c-.4 0-.7-.3-.7-.7s.3-.7.7-.7h1.6c.5 0 .7.3.8.8.3 1.4 1.2 2.7 2.4 3.2v3.2c0 .5.3.7.7.7 1 0 2.4-1.2 3.2-2.7.5-1 .7-2.2.7-3.2 0-.5.3-.8.7-.8h1.6c.4 0 .7.3.7.7 0 1.5-1 2.8-2.4 3.7-.5 1.2-.7 2.4-.7 3.2 0 .5-.3.7-.7.7z"/></svg>
+                    VK
+                </a>
             </div>
         </div>
     </section>
@@ -180,6 +225,27 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Карусель для галереи
+        const carouselImages = document.querySelector('.carousel-images');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        let currentIndex = 0;
+        const totalImages = 3;
+
+        function updateCarousel() {
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+            updateCarousel();
         });
     </script>
 </body>
