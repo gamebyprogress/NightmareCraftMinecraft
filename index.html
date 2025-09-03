@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NightmareCraft - Хоррор сборка для Minecraft</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Creepster', cursive;
-            background: url('https://images.pexels.com/photos/1655901/pexels-photo-1655901.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center fixed;
+            font-family: 'Roboto', sans-serif;
+            background: url('https://img3.akspic.ru/previews/2/5/3/8/2/128352/128352-videoigra-okruzhayushchaya_sreda-televideniye-les-utro-x750.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-color: #1a1a1a; /* Резервный цвет фона */
+            background-color: #0a0a0a; /* Темный резервный фон */
             position: relative;
+            color: #e0e0e0;
         }
         body::before {
             content: '';
@@ -21,77 +22,116 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8); /* Усиленное затемнение */
+            background: rgba(0, 0, 0, 0.8); /* Чуть светлее затемнение */
             z-index: 1;
         }
-        .glow {
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+        h1, h2, h3, h4 {
+            font-family: 'Nosifer', cursive;
+            color: #ff1a1a; /* Глубокий красный */
+            text-shadow: 0 0 8px rgba(255, 26, 26, 0.5);
         }
-        .btn-glow:hover {
-            box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+        .btn {
+            background: linear-gradient(45deg, #ff1a1a, #b31212);
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        /* Обеспечиваем, чтобы контент был поверх затемняющего слоя */
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 26, 26, 0.7);
+        }
+        nav a {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            color: #ff4d4d;
+            transform: translateY(-1px);
+        }
         header, section, footer {
             position: relative;
             z-index: 2;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(20, 0, 0, 0.8)); /* Плавный градиент */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
+        }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        footer { animation-delay: 0.8s; }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .password-text {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #ff1a1a;
+            text-shadow: 0 0 5px #ff1a1a;
         }
     </style>
 </head>
-<body class="text-white">
-    <header class="bg-black bg-opacity-80 py-4 sticky top-0 z-10">
+<body>
+    <header class="py-4 sticky top-0 z-10">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-3xl md:text-4xl glow">NightmareCraft</h1>
-            <nav>
-                <a href="#about" class="mx-2 hover:text-red-500 transition">О сборке</a>
-                <a href="#download" class="mx-2 hover:text-red-500 transition">Скачать</a>
-                <a href="#contact" class="mx-2 hover:text-red-500 transition">Контакты</a>
+            <h1 class="text-3xl md:text-4xl">NightmareCraft</h1>
+            <nav class="space-x-6">
+                <a href="#about" class="text-lg hover:text-red-500">О сборке</a>
+                <a href="#download" class="text-lg hover:text-red-500">Скачать</a>
+                <a href="#contact" class="text-lg hover:text-red-500">Контакты</a>
             </nav>
         </div>
     </header>
 
     <section id="hero" class="h-screen flex items-center justify-center text-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-5xl md:text-7xl glow mb-4">NightmareCraft</h2>
-            <p class="text-xl md:text-2xl mb-8">Погрузись в ужасающий мир Minecraft с нашей хоррор-сборкой!</p>
-            <a href="#download" class="bg-red-600 text-white px-6 py-3 rounded-full text-lg btn-glow transition">Скачать сборку</a>
+            <h2 class="text-5xl md:text-7xl mb-6">NightmareCraft</h2>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Погрузись в ужасающий мир Minecraft с нашей хоррор-сборкой, где каждый шаг может стать последним!</p>
+            <a href="#download" class="btn text-white text-lg">Скачать сборку</a>
         </div>
     </section>
 
-    <section id="about" class="py-16 bg-black bg-opacity-70">
+    <section id="about" class="py-16">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl md:text-4xl glow mb-8 text-center">О NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-4">NightmareCraft - это уникальная хоррор-сборка для Minecraft, которая превратит твою игру в настоящий кошмар. Мрачные текстуры, жуткие звуки, новые мобы и пугающие локации ждут тебя!</p>
-            <ul class="list-disc list-inside text-lg md:text-xl">
-                <li>Кастомные текстуры и шейдеры для максимальной атмосферы</li>
-                <li>Новые мобы, которые заставят тебя оглядываться</li>
-                <li>Сюжетные квесты с элементами хоррора</li>
-                <li>Оптимизировано для всех версий Minecraft 1.16.5+</li>
+            <h3 class="text-3xl md:text-4xl mb-8 text-center">О NightmareCraft</h3>
+            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">NightmareCraft - это хоррор-сборка для Minecraft, которая превратит твою игру в настоящий кошмар. Версия 1.0 включает всё, чтобы ты дрожал от ужаса!</p>
+            <h4 class="text-2xl mb-4 text-center">Что в версии 1.0:</h4>
+            <ul class="list-disc list-inside text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                <li><strong>Мрачные текстуры</strong>: Переработанные блоки и предметы с жуткими деталями — от кровавых пятен до потрескавшихся стен.</li>
+                <li><strong>Кастомные мобы</strong>: Новые враги, такие как Теневой Сталкер и Проклятый Скелет, с уникальными атаками и звуками.</li>
+                <li><strong>Атмосферные шейдеры</strong>: Туман, динамические тени и кроваво-красное освещение для пугающей атмосферы.</li>
+                <li><strong>Сюжетные квесты</strong>: Исследуй заброшенные деревни и подземелья с хоррор-историями, полными загадок.</li>
+                <li><strong>Звуковое сопровождение</strong>: Жуткие звуки шагов, шепота и скрипов, которые заставят тебя оглядываться.</li>
+                <li><strong>Оптимизация</strong>: Поддержка Minecraft 1.16.5 и выше, работает даже на слабых ПК.</li>
             </ul>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto">Эта сборка идеально подходит для тех, кто хочет испытать Minecraft в новом, пугающем свете. Готов ли ты выжить в NightmareCraft?</p>
         </div>
     </section>
 
-    <section id="download" class="py-16 bg-gray-900 bg-opacity-80 text-center">
+    <section id="download" class="py-16 text-center">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl md:text-4xl glow mb-8">Скачай NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-8">Готов к кошмару? Нажми кнопку ниже, чтобы скачать zip-архив с нашей сборкой!</p>
-            <a href="nightmarecraft.zip" download class="bg-red-600 text-white px-8 py-4 rounded-full text-xl btn-glow transition">Скачать сборку (ZIP)</a>
-            <p class="text-sm mt-4">* Убедись, что у тебя установлена последняя версия Minecraft Forge.</p>
+            <h3 class="text-3xl md:text-4xl mb-8">Скачай NightmareCraft</h3>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Готов к кошмару? Нажми кнопку ниже, чтобы скачать zip-архив с нашей сборкой!</p>
+            <a href="nightmarecraft.zip" download class="btn text-white text-xl">Скачать сборку (ZIP)</a>
+            <p class="password-text mt-4">Пароль от архива: <strong>1337</strong></p>
         </div>
     </section>
 
-    <section id="contact" class="py-16 bg-black bg-opacity-70">
+    <section id="contact" class="py-16">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl md:text-4xl glow mb-8">Связаться с нами</h3>
-            <p class="text-lg md:text-xl mb-8">Есть вопросы или предложения? Пиши нам!</p>
-            <div class="flex justify-center space-x-4">
-                <a href="mailto:support@nightmarecraft.com" class="text-red-500 hover:text-red-700">support@nightmarecraft.com</a>
-                <a href="https://discord.gg/nightmarecraft" class="text-red-500 hover:text-red-700">Discord</a>
+            <h3 class="text-3xl md:text-4xl mb-8">Связаться с нами</h3>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Есть вопросы или предложения? Пиши нам!</p>
+            <div class="flex justify-center space-x-6">
+                <a href="mailto:support@nightmarecraft.com" class="text-lg text-red-500 hover:text-red-300">support@nightmarecraft.com</a>
+                <a href="https://discord.gg/nightmarecraft" class="text-lg text-red-500 hover:text-red-300">Discord</a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black bg-opacity-80 py-4 text-center">
-        <p>&copy; 2025 NightmareCraft. Все права защищены.</p>
+    <footer class="py-4 text-center">
+        <p class="text-sm">&copy; 2025 NightmareCraft. Все права защищены.</p>
     </footer>
 
     <script>
