@@ -4,34 +4,129 @@
   <meta charset="UTF-8">
   <title>NightmareCraft</title>
   <style>
+    /* Общий фон и анимация */
     body {
       margin: 0;
       font-family: 'Press Start 2P', cursive;
       background: url('https://i.ibb.co/7yZb3S4/minecraft-grass.png') repeat;
       color: #fff;
       text-align: center;
+      animation: fadeIn 2s ease-in;
+      overflow-x: hidden;
     }
-    h1 { font-size: 32px; margin-top: 50px; text-shadow: 3px 3px 0 #000; }
-    p { max-width: 500px; margin: 20px auto; font-size: 14px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Заголовок */
+    h1 {
+      font-size: 42px;
+      margin-top: 50px;
+      text-shadow: 4px 4px 0 #000;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Описание */
+    p {
+      max-width: 650px;
+      margin: 20px auto;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Кнопка скачать */
     .btn {
       display: inline-block;
       margin-top: 30px;
-      padding: 20px 40px;
+      padding: 20px 50px;
       font-size: 20px;
       background: #3c8527;
       border: 4px solid #000;
       color: #fff;
       text-decoration: none;
       box-shadow: 4px 4px 0 #000;
-      transition: transform 0.1s;
+      transition: transform 0.1s, background 0.2s;
     }
-    .btn:hover { transform: translateY(-3px); background: #47a632; }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #47a632;
+    }
+
+    /* Галерея скриншотов */
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+      padding-bottom: 50px;
+    }
+
+    .gallery img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      transition: transform 0.3s, filter 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    /* Плавающие тени для хоррор-эффекта */
+    .shadow {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 80%);
+      animation: floatShadow 5s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatShadow {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(15px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+
   </style>
+
+  <!-- Пиксельный шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Плавающие тени -->
+  <div class="shadow" style="top: 100px; left: 50px;"></div>
+  <div class="shadow" style="top: 200px; left: 300px;"></div>
+  <div class="shadow" style="top: 400px; left: 150px;"></div>
+
+  <!-- Заголовок и описание -->
   <h1>🎮 NightmareCraft 🎮</h1>
-  <p>Хоррор-сборка для Minecraft. Страшные моды, новые монстры и пугающие события. Лёгкая установка – скачай и погрузись в мир настоящего ужаса!</p>
+  <p>Погрузись в мир настоящего ужаса Minecraft! Страшные моды, пугающие события и новые монстры ждут тебя. Скачай сборку и проверь, хватит ли у тебя смелости!</p>
+
+  <!-- Кнопка скачать сборку -->
   <a href="NightmareCraft.zip" download class="btn">📥 Скачать сборку</a>
+
+  <!-- Галерея скриншотов -->
+  <div class="gallery">
+    <img src="https://i.ibb.co/1z3Cw5Y/minecraft-horror1.png" alt="Скриншот 1">
+    <img src="https://i.ibb.co/0yZ1d0y/minecraft-horror2.png" alt="Скриншот 2">
+    <img src="https://i.ibb.co/8cNq8y9/minecraft-horror3.png" alt="Скриншот 3">
+    <img src="https://i.ibb.co/ZM0f0F0/minecraft-horror4.png" alt="Скриншот 4">
+  </div>
+
 </body>
 </html>
