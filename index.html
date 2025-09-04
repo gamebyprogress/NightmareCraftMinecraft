@@ -30,9 +30,10 @@
             font-family: 'Nosifer', cursive;
             color: #cc3333;
             text-shadow: 0 0 8px rgba(204, 51, 51, 0.5);
+            letter-spacing: 2px;
         }
         h2 {
-            animation: typing 3s steps(20) forwards, blink 0.5s step-end infinite;
+            animation: typing 1.5s steps(20) forwards;
             white-space: nowrap;
             overflow: hidden;
             border-right: 2px solid #cc3333;
@@ -40,9 +41,6 @@
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
-        }
-        @keyframes blink {
-            50% { border-color: transparent; }
         }
         .btn {
             background: linear-gradient(45deg, #cc3333, #b31212);
@@ -69,6 +67,7 @@
         }
         nav a {
             transition: color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
         }
         nav a:hover {
             color: #ff6666;
@@ -111,14 +110,11 @@
         .carousel-images img {
             width: 100%;
             height: auto;
-            border: none;
-            outline: none;
-            border-radius: 8px;
             flex: 0 0 100%;
+            clip-path: inset(2px 2px 2px 2px);
             box-shadow: 0 2px 5px rgba(204, 51, 51, 0.3);
             will-change: transform, box-shadow;
             transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-            cursor: pointer;
         }
         .carousel:hover .carousel-images img {
             transform: scale(1.05);
@@ -141,34 +137,45 @@
         }
         .carousel-btn.prev { left: 10px; }
         .carousel-btn.next { right: 10px; }
-        #modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 50;
-            display: none;
+        .contact-link {
+            display: flex;
             align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        #modal-img {
-            max-width: 90%;
-            max-height: 80%;
+            gap: 12px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(204, 51, 51, 0.2), rgba(179, 18, 18, 0.2));
             border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        #modal-caption {
-            color: #cc3333;
-            text-shadow: 0 0 5px rgba(204, 51, 51, 0.7);
-            margin-top: 1rem;
-            font-size: 1.25rem;
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(204, 51, 51, 0.5);
         }
-        #modal-close {
+        .contact-link svg {
+            width: 24px;
+            height: 24px;
+            fill: #cc3333;
+            transition: fill 0.3s ease;
+        }
+        .contact-link:hover svg {
+            fill: #ff6666;
+        }
+        .custom-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        .custom-list li:before {
+            content: "🩸";
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: #cc3333;
-            font-size: 2rem;
-            cursor: pointer;
+            left: 0;
+            color: #800000;
+            animation: bloodDrip 2s infinite;
+            text-shadow: 0 0 3px #800000, 0 0 6px #990000;
+        }
+        @keyframes bloodDrip {
+            0% { text-shadow: 0 0 3px #800000, 0 0 6px #990000; }
+            50% { text-shadow: 0 0 4px #800000, 0 0 7px #990000; }
+            100% { text-shadow: 0 0 3px #800000, 0 0 6px #990000; }
         }
     </style>
 </head>
@@ -177,9 +184,9 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-3xl md:text-4xl">NightmareCraft</h1>
             <nav class="space-x-6">
-                <a href="#about" class="text-lg hover:text-red-500">О сборке</a>
-                <a href="#download" class="text-lg hover:text-red-500">Скачать</a>
-                <a href="#contact" class="text-lg hover:text-red-500">Контакты</a>
+                <a href="#about" class="text-lg hover:text-red-500">О СБОРКЕ</a>
+                <a href="#download" class="text-lg hover:text-red-500">СКАЧАТЬ</a>
+                <a href="#contact" class="text-lg hover:text-red-500">КОНТАКТЫ</a>
             </nav>
         </div>
     </header>
@@ -194,16 +201,16 @@
 
     <section id="about" class="py-16">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl md:text-4xl mb-8 text-center">Погрузись в NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto">NightmareCraft — это билет в мир страха и адреналина! Версия 1.2.7 превращает Minecraft в жуткое приключение, от которого кровь стынет в жилах.</p>
-            <h4 class="text-2xl mb-4 text-center">Что в версии 1.2.7:</h4>
-            <ul class="list-disc list-inside text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-                <li><strong>Жуткие текстуры</strong>: Кровавые пятна, треснувшие стены и мрак, который пробирает до костей.</li>
+            <h3 class="text-3xl md:text-4xl mb-8 text-center">Погрузись в <span class="text-red-500">NightmareCraft</span></h3>
+            <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto">NightmareCraft — твой билет в мир <strong>страха и адреналина</strong>! Версия 1.2.7 превращает Minecraft в жуткое приключение, от которого кровь стынет в жилах.</p>
+            <h4 class="text-2xl mb-4 text-center">Что ждёт в версии 1.2.7:</h4>
+            <ul class="custom-list text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                <li><strong>Жуткие текстуры</strong>: Кровавые пятна, треснувшие стены и мрак, проникающий в душу.</li>
                 <li><strong>Страшные мобы</strong>: Теневой Сталкер и призрачные твари с пугающим ИИ.</li>
                 <li><strong>Шейдеры</strong>: Густой туман и кроваво-красный свет для полной атмосферы ужаса.</li>
-                <li><strong>Квесты</strong>: Заброшенные деревни и подземелья с ловушками и мрачной историей.</li>
-                <li><strong>Звуки</strong>: Шёпот, скрипы и шаги, от которых сердце замирает.</li>
-                <li><strong>Оптимизация</strong>: Летает на любом ПК с Minecraft 1.16.5 и выше.</li>
+                <li><strong>Квесты</strong>: Заброшенные деревни с ловушками и мрачной историей.</li>
+                <li><strong>Звуки</strong>: Шёпот, скрипы и шаги, от которых мурашки по коже.</li>
+                <li><strong>Оптимизация</strong>: Работает на любом ПК с Minecraft 1.16.5+.</li>
             </ul>
             <div class="carousel">
                 <div class="carousel-images">
@@ -214,28 +221,23 @@
                 <button class="carousel-btn prev">&larr;</button>
                 <button class="carousel-btn next">&rarr;</button>
             </div>
-            <div id="modal">
-                <img id="modal-img" src="" alt="">
-                <p id="modal-caption"></p>
-                <button id="modal-close">&times;</button>
-            </div>
         </div>
     </section>
 
     <section id="download" class="py-16 text-center">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl md:text-4xl mb-8">Скачай NightmareCraft</h3>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Хватит духу? Жми кнопку и погружайся в кошмар!</p>
+            <h3 class="text-3xl md:text-4xl mb-12">Скачай <span class="text-red-500">NightmareCraft</span></h3>
+            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto">Хватит ли у тебя смелости? Нажми и окунись в кошмар!</p>
             <a href="https://mega.nz/folder/yAUVABKT#GB0x8LRUySRi6rUx6WoAtw" target="_blank" rel="noopener noreferrer" class="download-btn text-white">Скачать сборку (ZIP)</a>
-            <p class="password-text mt-4">Пароль от архива: <strong>1337</strong></p>
-            <div class="text-lg md:text-xl mt-6 max-w-2xl mx-auto">
-                <h4 class="text-xl mb-4">Как установить:</h4>
-                <ol class="list-decimal list-inside text-left">
-                    <li>Кликни на кнопку выше — она откроет папку на Mega в новой вкладке браузера.</li>
-                    <li>Найди файл <strong>NightmareCraft.zip</strong>, нажми на него и выбери «Скачать». Загрузка начнётся автоматически.</li>
-                    <li>Открой папку «Загрузки» (или куда сохраняешь файлы) и найди скачанный архив.</li>
-                    <li>Кликни правой кнопкой по архиву, выбери «Извлечь всё» (или открой в WinRAR/7-Zip). Введи пароль <strong>1337</strong> для разархивирования.</li>
-                    <li>В папке найди <strong>setup-mode v1.2.7</strong>, дважды щёлкни и следуй подсказкам, чтобы установить сборку.</li>
+            <p class="password-text mt-12">Пароль от архива: <strong>1337</strong></p>
+            <div class="text-lg md:text-xl mt-12 max-w-2xl mx-auto">
+                <h4 class="text-xl mb-6">Как установить:</h4>
+                <ol class="custom-list text-left">
+                    <li>Кликни кнопку выше — откроется папка на Mega в новой вкладке.</li>
+                    <li>Найди <strong>NightmareCraft.zip</strong>, нажми «Скачать».</li>
+                    <li>Открой папку «Загрузки» и найди архив.</li>
+                    <li>Разархивируй с паролем <strong>1337</strong> (WinRAR/7-Zip).</li>
+                    <li>Запусти <strong>setup-mode v1.2.7</strong> и следуй инструкциям.</li>
                 </ol>
             </div>
         </div>
@@ -243,23 +245,31 @@
 
     <section id="contact" class="py-16">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl md:text-4xl mb-8">Связаться с нами</h3>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Столкнулся с проблемой или хочешь предложить идею? Пиши нам, мы всегда на связи!</p>
+            <h3 class="text-3xl md:text-4xl mb-8">Связаться с <span class="text-red-500">нами</span></h3>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Проблемы или идеи? Мы всегда на связи!</p>
             <div class="flex justify-center flex-wrap gap-6">
-                <a href="mailto:support@nightmarecraft.com" class="text-lg text-red-500 hover:text-red-300 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5z"/></svg>
+                <a href="mailto:support@nightmarecraft.com" class="contact-link">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5z"/>
+                    </svg>
                     support@nightmarecraft.com
                 </a>
-                <a href="https://discord.gg/nightmarecraft" class="text-lg text-red-500 hover:text-red-300 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20.3 4.7A17.8 17.8 0 0012 2a17.8 17.8 0 00-8.3 2.7C1.4 7.3 0 10.7 0 14.5c0 2.8 1.3 5.4 3.5 7.2l-.6 2.2c-.2.7.5 1.3 1.2 1.1l2.4-.9c1 .3 2 .5 3.1.5 3.8 0 7.2-1.4 9.8-3.8 2.3-2.6 3.5-6 3.5-9.8 0-3.8-1.4-7.2-3.8-9.8zm-3.4 14.5c-.6.8-1.7 1.2-3 1.2l-1.4.5c-.3.1-.6-.2-.5-.5l.3-1.1c-1.1-.3-2.1-.8-3-1.5l-.2-.2c-.2-.2-.1-.5.1-.6l.7-.4c.4-.2.8-.1 1 .2.8.9 1.8 1.5 3 1.5 1.7 0 3-.9 3-2s-1.3-2-3-2c-2.2 0-3.3 1.1-3.3 2.2 0 .4.3.7.7.7s.7-.3.7-.7c0-.6.7-1 1.9-1 1 0 1.6.4 1.6 1 0 .7-.5 1.2-1.1 1.5zm-6.7-3.3c-.4.2-.8.1-1-.2l-.7-.4c-.2-.2-.3-.5-.1-.6l.2-.2c.9-.7 1.9-1.2 3-1.5l-.3-1.1c-.1-.3.2-.6.5-.5l1.4.5c1.3 0 2.4-.4 3-1.2.6-.8 1.1-1.9 1.1-3.2 0-1.3-.6-2.2-1.6-2.2-1.2 0-1.9.4-1.9 1 0 .4-.3.7-.7.7s-.7-.3-.7-.7c0-1.1 1.1-2.2 3.3-2.2 1.7 0 3 .9 3 2s-1.3 2-3 2c-1.2 0-2.2-.6-3-1.5l-.3 1.1c-.1.3.2.6.5.5l1.4-.5c1.3 0 2.4.4 3 1.2.6.8 1.1 1.9 1.1 3.2 0 1.3-.6 2.2-1.6 2.2-1.2 0-1.9-.4-1.9-1 0-.4-.3-.7-.7-.7s-.7.3-.7.7c0 1.1 1.1 2.2 3.3 2.2 1.7 0 3-.9 3-2 0-1.3-.6-2.4-1.6-3.2z"/></svg>
+                <a href="https://discord.gg/nightmarecraft" class="contact-link">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.3 4.7A17.8 17.8 0 0012 2a17.8 17.8 0 00-8.3 2.7C1.4 7.3 0 10.7 0 14.5c0 2.8 1.3 5.4 3.5 7.2l-.6 2.2c-.2.7.5 1.3 1.2 1.1l2.4-.9c1 .3 2 .5 3.1.5 3.8 0 7.2-1.4 9.8-3.8 2.3-2.6 3.5-6 3.5-9.8 0-3.8-1.4-7.2-3.8-9.8zm-3.4 14.5c-.6.8-1.7 1.2-3 1.2l-1.4.5c-.3.1-.6-.2-.5-.5l.3-1.1c-1.1-.3-2.1-.8-3-1.5l-.2-.2c-.2-.2-.1-.5.1-.6l.7-.4c.4-.2.8-.1 1 .2.8.9 1.8 1.5 3 1.5 1.7 0 3-.9 3-2s-1.3-2-3-2c-2.2 0-3.3 1.1-3.3 2.2 0 .4.3.7.7.7s.7-.3.7-.7c0-.6.7-1 1.9-1 1 0 1.6.4 1.6 1 0 .7-.5 1.2-1.1 1.5zm-6.7-3.3c-.4.2-.8.1-1-.2l-.7-.4c-.2-.2-.3-.5-.1-.6l.2-.2c.9-.7 1.9-1.2 3-1.5l-.3-1.1c-.1-.3.2-.6.5-.5l1.4.5c1.3 0 2.4-.4 3-1.2.6-.8 1.1-1.9 1.1-3.2 0-1.3-.6-2.2-1.6-2.2-1.2 0-1.9.4-1.9 1 0 .4-.3.7-.7.7s-.7-.3-.7-.7c0-1.1 1.1-2.2 3.3-2.2 1.7 0 3 .9 3 2s-1.3 2-3 2c-1.2 0-2.2-.6-3-1.5l-.3 1.1c-.1.3.2.6.5.5l1.4-.5c1.3 0 2.4.4 3 1.2.6.8 1.1 1.9 1.1 3.2 0 1.3-.6 2.2-1.6 2.2-1.2 0-1.9-.4-1.9-1 0-.4-.3-.7-.7-.7s-.7.3-.7.7c0 1.1 1.1 2.2 3.3 2.2 1.7 0 3-.9 3-2 0-1.3-.6-2.4-1.6-3.2z"/>
+                    </svg>
                     Discord
                 </a>
-                <a href="https://t.me/nightmarecraft" class="text-lg text-red-500 hover:text-red-300 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.6 7.7l-1.8 8.5c-.1.6-.5.9-1 .7l-2.7-2-1.3 1.3c-.1.1-.2.2-.4.2l.2-2.8 5.1-4.6c.2-.2-.1-.6-.4-.4l-6.3 4-2.7-2c-.5-.5-.1-1.2.6-.8l10.4 4.1c.4.2.7-.1.6-.5l-2-9.5c-.2-.5.3-.8.6-.5z"/></svg>
+                <a href="https://t.me/nightmarecraft" class="contact-link">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.6 7.7l-1.8 8.5c-.1.6-.5.9-1 .7l-2.7-2-1.3 1.3c-.1.1-.2.2-.4.2l.2-2.8 5.1-4.6c.2-.2-.1-.6-.4-.4l-6.3 4-2.7-2c-.5-.5-.1-1.2.6-.8l10.4 4.1c.4.2.7-.1.6-.5l-2-9.5c-.2-.5.3-.8.6-.5z"/>
+                    </svg>
                     Telegram
                 </a>
-                <a href="https://vk.com/nightmarecraft" class="text-lg text-red-500 hover:text-red-300 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3h-1.6c-.5 0-.7-.3-.9-.8-.5-1.5-1.7-2.7-2.7-2.7-.6 0-.7.3-.7.8v2.7c0 .5-.3.8-.7.8h-3.2c-.4 0-.7-.3-.7-.7 0-3.6 2.4-5.5 3.2-6.1 1.5-1 2.4-1.7 2.4-2.8 0-.7-.3-1-.8-1h-1.6c-.5 0-.7.3-.8.8-.3 1.4-1.2 2.7-2.4 3.2v-3.2c0-.5-.3-.8-.7-.8H6.3c-.4 0-.7-.3-.7-.7s.3-.7.7-.7h1.6c.5 0 .7.3.8.8.3 1.4 1.2 2.7 2.4 3.2v3.2c0 .5.3.7.7.7 1 0 2.4-1.2 3.2-2.7.5-1 .7-2.2.7-3.2 0-.5.3-.8.7-.8h1.6c.4 0 .7.3.7.7 0 1.5-1 2.8-2.4 3.7-.5 1.2-.7 2.4-.7 3.2 0 .5-.3.7-.7.7z"/></svg>
+                <a href="https://vk.com/nightmarecraft" class="contact-link">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.7 17.3h-1.6c-.5 0-.7-.3-.9-.8-.5-1.5-1.7-2.7-2.7-2.7-.6 0-.7.3-.7.8v2.7c0 .5-.3.8-.7.8h-3.2c-.4 0-.7-.3-.7-.7 0-3.6 2.4-5.5 3.2-6.1 1.5-1 2.4-1.7 2.4-2.8 0-.7-.3-1-.8-1h-1.6c-.5 0-.7.3-.8.8-.3 1.4-1.2 2.7-2.4 3.2v-3.2c0-.5-.3-.8-.7-.8H6.3c-.4 0-.7-.3-.7-.7s.3-.7.7-.7h1.6c.5 0 .7.3.8.8.3 1.4 1.2 2.7 2.4 3.2v3.2c0 .5.3.7.7.7 1 0 2.4-1.2 3.2-2.7.5-1 .7-2.2.7-3.2 0-.5.3-.8.7-.8h1.6c.4 0 .7.3.7.7 0 1.5-1 2.8-2.4 3.7-.5 1.2-.7 2.4-.7 3.2 0 .5-.3.7-.7.7z"/>
+                    </svg>
                     VK
                 </a>
             </div>
@@ -302,16 +312,10 @@
             updateCarousel();
         });
 
-        // Модальное окно для галереи
-        document.querySelectorAll('.carousel-images img').forEach(img => {
-            img.addEventListener('click', () => {
-                document.getElementById('modal-img').src = img.src;
-                document.getElementById('modal-caption').textContent = img.alt;
-                document.getElementById('modal').style.display = 'flex';
-            });
-        });
-        document.getElementById('modal-close').addEventListener('click', () => {
-            document.getElementById('modal').style.display = 'none';
+        // Удаление мигающей строки после анимации текста
+        const heroText = document.querySelector('#hero h2');
+        heroText.addEventListener('animationend', () => {
+            heroText.style.borderRight = 'none';
         });
     </script>
 </body>
