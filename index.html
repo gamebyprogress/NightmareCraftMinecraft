@@ -6,7 +6,7 @@
     <title>NightmareCraft - Хоррор в Minecraft</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -27,10 +27,11 @@
             z-index: 1;
         }
         h1, h2, h3, h4 {
-            font-family: 'Nosifer', cursive;
+            font-family: 'Creepster', 'Nosifer', cursive;
             color: #cc3333;
             text-shadow: 0 0 8px rgba(204, 51, 51, 0.5);
             letter-spacing: 2px;
+            font-weight: 800;
         }
         h2 {
             animation: typing 1.5s steps(20) forwards;
@@ -68,6 +69,8 @@
         nav a {
             transition: color 0.3s ease, transform 0.3s ease;
             text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.25rem;
         }
         nav a:hover {
             color: #ff6666;
@@ -114,7 +117,7 @@
             clip-path: inset(2px 2px 2px 2px);
             box-shadow: 0 2px 5px rgba(204, 51, 51, 0.3);
             will-change: transform, box-shadow;
-            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
         }
         .carousel:hover .carousel-images img {
             transform: scale(1.05);
@@ -161,21 +164,28 @@
         }
         .custom-list li {
             position: relative;
-            padding-left: 30px;
+            padding-left: 10px;
             margin-bottom: 10px;
         }
         .custom-list li:before {
-            content: "🩸";
-            position: absolute;
-            left: 0;
-            color: #800000;
-            animation: bloodDrip 2s infinite;
-            text-shadow: 0 0 3px #800000, 0 0 6px #990000;
+            content: none;
         }
         @keyframes bloodDrip {
-            0% { text-shadow: 0 0 3px #800000, 0 0 6px #990000; }
-            50% { text-shadow: 0 0 4px #800000, 0 0 7px #990000; }
-            100% { text-shadow: 0 0 3px #800000, 0 0 6px #990000; }
+            0% { text-shadow: 0 0 3px #4C2C2C, 0 0 3px #4C2C2C; }
+            50% { text-shadow: 0 0 4px #4C2C2C, 0 0 4px #4C2C2C; }
+            100% { text-shadow: 0 0 3px #4C2C2C, 0 0 3px #4C2C2C; }
+        }
+        .blood-drop-sentence {
+            display: block;
+            padding-left: 20px;
+            text-align: center;
+        }
+        .blood-drop-sentence:before {
+            content: "🩸";
+            color: #4C2C2C;
+            animation: bloodDrip 2s infinite;
+            text-shadow: 0 0 3px #4C2C2C, 0 0 3px #4C2C2C;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -192,25 +202,31 @@
     </header>
 
     <section id="hero" class="h-screen flex items-center justify-center text-center">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 text-center">
             <h2 class="text-5xl md:text-7xl mb-12">NightmareCraft</h2>
-            <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">Шагни в тёмный лес Minecraft, где за каждым деревом поджидает кошмар. Готов испытать настоящий ужас?</p>
+            <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto text-center">
+                Шагни в тёмный лес Minecraft, где за каждым деревом поджидает кошмар.
+                Готов испытать настоящий ужас?
+            </p>
             <a href="#download" class="btn text-white text-lg">Скачать сборку</a>
         </div>
     </section>
 
-    <section id="about" class="py-16">
-        <div class="container mx-auto px-4">
-            <h3 class="text-3xl md:text-4xl mb-8 text-center">Погрузись в <span class="text-red-500">NightmareCraft</span></h3>
-            <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto">NightmareCraft — твой билет в мир <strong>страха и адреналина</strong>! Версия 1.2.7 превращает Minecraft в жуткое приключение, от которого кровь стынет в жилах.</p>
-            <h4 class="text-2xl mb-4 text-center">Что ждёт в версии 1.2.7:</h4>
-            <ul class="custom-list text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-                <li><strong>Жуткие текстуры</strong>: Кровавые пятна, треснувшие стены и мрак, проникающий в душу.</li>
-                <li><strong>Страшные мобы</strong>: Теневой Сталкер и призрачные твари с пугающим ИИ.</li>
-                <li><strong>Шейдеры</strong>: Густой туман и кроваво-красный свет для полной атмосферы ужаса.</li>
-                <li><strong>Квесты</strong>: Заброшенные деревни с ловушками и мрачной историей.</li>
-                <li><strong>Звуки</strong>: Шёпот, скрипы и шаги, от которых мурашки по коже.</li>
-                <li><strong>Оптимизация</strong>: Работает на любом ПК с Minecraft 1.16.5+.</li>
+    <section id="about" class="py-16 text-center">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl md:text-4xl mb-8">Погрузись в <span class="text-red-500">NightmareCraft</span></h3>
+            <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-center">
+                NightmareCraft — твой билет в мир <strong>страха и адреналина</strong>!
+                Версия 1.2.7 превращает Minecraft в жуткое приключение, от которого кровь стынет в жилах.
+            </p>
+            <h4 class="text-2xl mb-4">Что ждёт в версии 1.2.7:</h4>
+            <ul class="custom-list text-lg md:text-xl mb-8 max-w-3xl mx-auto text-center">
+                <li><span class="blood-drop-sentence"><strong>Жуткие текстуры</strong>: Кровавые пятна, треснувшие стены и мрак, проникающий в душу.</span></li>
+                <li><span class="blood-drop-sentence"><strong>Страшные мобы</strong>: Теневой Сталкер и призрачные твари с пугающим ИИ.</span></li>
+                <li><span class="blood-drop-sentence"><strong>Шейдеры</strong>: Густой туман и кроваво-красный свет для полной атмосферы ужаса.</span></li>
+                <li><span class="blood-drop-sentence"><strong>Квесты</strong>: Заброшенные деревни с ловушками и мрачной историей.</span></li>
+                <li><span class="blood-drop-sentence"><strong>Звуки</strong>: Шёпот, скрипы и шаги, от которых мурашки по коже.</span></li>
+                <li><span class="blood-drop-sentence"><strong>Оптимизация</strong>: Работает на любом ПК с Minecraft 1.16.5+.</span></li>
             </ul>
             <div class="carousel">
                 <div class="carousel-images">
@@ -225,28 +241,35 @@
     </section>
 
     <section id="download" class="py-16 text-center">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-12">Скачай <span class="text-red-500">NightmareCraft</span></h3>
-            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto">Хватит ли у тебя смелости? Нажми и окунись в кошмар!</p>
+            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-center">
+                Хватит ли у тебя смелости?
+                Нажми и окунись в кошмар!
+            </p>
             <a href="https://mega.nz/folder/yAUVABKT#GB0x8LRUySRi6rUx6WoAtw" target="_blank" rel="noopener noreferrer" class="download-btn text-white">Скачать сборку (ZIP)</a>
-            <p class="password-text mt-12">Пароль от архива: <strong>1337</strong></p>
-            <div class="text-lg md:text-xl mt-12 max-w-2xl mx-auto">
+            <p class="password-text mt-12 text-center">Пароль от архива: <strong>1337</strong></p>
+            <div class="text-lg md:text-xl mt-12 max-w-2xl mx-auto text-center">
                 <h4 class="text-xl mb-6">Как установить:</h4>
-                <ol class="custom-list text-left">
-                    <li>Кликни кнопку выше — откроется папка на Mega в новой вкладке.</li>
-                    <li>Найди <strong>NightmareCraft.zip</strong>, нажми «Скачать».</li>
-                    <li>Открой папку «Загрузки» и найди архив.</li>
-                    <li>Разархивируй с паролем <strong>1337</strong> (WinRAR/7-Zip).</li>
-                    <li>Запусти <strong>setup-mode v1.2.7</strong> и следуй инструкциям.</li>
+                <ol class="custom-list text-center">
+                    <li><span class="blood-drop-sentence">Кликни кнопку выше — откроется папка на Mega в новой вкладке.</span></li>
+                    <li><span class="blood-drop-sentence">Найди <strong>NightmareCraft.zip</strong>, нажми «Скачать».</span></li>
+                    <li><span class="blood-drop-sentence">Открой папку «Загрузки» и найди архив.</span></li>
+                    <li><span class="blood-drop-sentence">Разархивируй с паролем <strong>1337</strong> (WinRAR/7-Zip).</span></li>
+                    <li><span class="blood-drop-sentence">Запусти <strong>setup-mode v1.2.7</strong> и следуй инструкциям.</span></li>
+                    <li><span class="blood-drop-sentence">Если SmartScreen ругается, нажми 'Подробнее' и выполни загрузку в любом случае.</span></li>
                 </ol>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-16">
+    <section id="contact" class="py-16 text-center">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-8">Связаться с <span class="text-red-500">нами</span></h3>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Проблемы или идеи? Мы всегда на связи!</p>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-center">
+                Проблемы или идеи?
+                Мы всегда на связи!
+            </p>
             <div class="flex justify-center flex-wrap gap-6">
                 <a href="mailto:support@nightmarecraft.com" class="contact-link">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
