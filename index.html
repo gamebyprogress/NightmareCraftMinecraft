@@ -29,15 +29,19 @@
         h1, h2, h3, h4 {
             font-family: 'Creepster', 'Nosifer', cursive;
             color: #cc3333;
-            text-shadow: 0 0 8px rgba(204, 51, 51, 0.5);
-            letter-spacing: 2px;
-            font-weight: 800;
+            text-shadow: 0 0 12px rgba(204, 51, 51, 0.8), 0 0 20px rgba(255, 0, 0, 0.5);
+            letter-spacing: 4px;
+            font-weight: 900;
         }
+        h1 { font-size: 5rem; }
+        h2 { font-size: 4rem; }
+        h3 { font-size: 3.5rem; }
+        h4 { font-size: 2.5rem; }
         h2 {
             animation: typing 1.5s steps(20) forwards;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 2px solid #cc3333;
+            border-right: 3px solid #cc3333;
         }
         @keyframes typing {
             from { width: 0; }
@@ -58,8 +62,8 @@
             padding: 16px 32px;
             border-radius: 10px;
             font-weight: bold;
-            font-size: 1.25rem;
-            text-shadow: 0 0 5px rgba(204, 51, 51, 0.8);
+            font-size: 1.5rem;
+            text-shadow: 0 0 8px rgba(204, 51, 51, 0.8);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .download-btn:hover {
@@ -70,7 +74,7 @@
             transition: color 0.3s ease, transform 0.3s ease;
             text-transform: uppercase;
             font-weight: 900;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         nav a:hover {
             color: #ff6666;
@@ -97,9 +101,9 @@
         }
         .password-text {
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #cc3333;
-            text-shadow: 0 0 5px #cc3333;
+            text-shadow: 0 0 8px #cc3333;
         }
         .carousel {
             position: relative;
@@ -171,47 +175,28 @@
         .custom-list li:before {
             content: none;
         }
-        @keyframes bloodDrip {
-            0% { 
-                text-shadow: 0 0 2px #4C2C2C, 0 0 2px #4C2C2C;
-                background: linear-gradient(to bottom, #4C2C2C, #3C1C1C);
-                -webkit-background-clip: text;
-                color: transparent;
-                transform: translateX(0);
-            }
-            20% { 
-                transform: translateX(-1px);
-            }
-            40% { 
-                transform: translateX(1px);
-            }
-            60% { 
-                transform: translateX(-1px);
-            }
-            80% { 
-                transform: translateX(1px);
-            }
-            100% { 
-                text-shadow: 0 0 2px #4C2C2C, 0 0 2px #4C2C2C;
-                background: linear-gradient(to bottom, #4C2C2C, #3C1C1C);
-                -webkit-background-clip: text;
-                color: transparent;
-                transform: translateX(0);
-            }
+        .horror-symbol {
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 1.5em;
+            color: #cc3333;
         }
-        .blood-drop-sentence {
-            display: block;
-            padding-left: 20px;
+        .feature-block {
+            background: linear-gradient(135deg, rgba(28, 0, 0, 0.9), rgba(76, 44, 44, 0.7));
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            white-space: normal;
+            font-size: 0.9rem;
+            margin: 15px;
+            padding: 25px;
         }
-        .blood-drop-sentence:before {
-            content: "🩸";
-            font-size: 16px;
-            color: transparent;
-            animation: bloodDrip 3s infinite;
-            margin-right: 10px;
-            -webkit-background-clip: text;
-            background: linear-gradient(to bottom, #4C2C2C, #3C1C1C);
+        .feature-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(204, 51, 51, 0.5);
         }
         .stat-card {
             background: linear-gradient(135deg, rgba(28, 0, 0, 0.9), rgba(76, 44, 44, 0.7));
@@ -275,14 +260,14 @@
                 Версия 1.2.7 раскрывает тёмные тайны заброшенных деревень и кровавых теней, заставляя сердце биться чаще.
             </p>
             <h4 class="text-2xl mb-4">Что ждёт в версии 1.2.7:</h4>
-            <ul class="custom-list text-lg md:text-xl mb-8 max-w-3xl mx-auto text-center">
-                <li><span class="blood-drop-sentence"><strong>Жуткие текстуры</strong>: Кровавые пятна, треснувшие стены и мрак, проникающий в душу.</span></li>
-                <li><span class="blood-drop-sentence"><strong>Страшные мобы</strong>: Теневой Сталкер и призрачные твари с пугающим ИИ.</span></li>
-                <li><span class="blood-drop-sentence"><strong>Шейдеры</strong>: Густой туман и кроваво-красный свет для полной атмосферы ужаса.</span></li>
-                <li><span class="blood-drop-sentence"><strong>Квесты</strong>: Заброшенные деревни с ловушками и мрачной историей.</span></li>
-                <li><span class="blood-drop-sentence"><strong>Звуки</strong>: Шёпот, скрипы и шаги, от которых мурашки по коже.</span></li>
-                <li><span class="blood-drop-sentence"><strong>Оптимизация</strong>: Работает на любом ПК с Minecraft 1.16.5+.</span></li>
-            </ul>
+            <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
+                <div class="feature-block"><span class="horror-symbol">☠</span><br><strong>Жуткие текстуры</strong><br>Кровавые пятна, треснувшие стены, мрак, проникающий в душу, и зловещие узоры, создающие атмосферу страха.</div>
+                <div class="feature-block"><span class="horror-symbol">👻</span><br><strong>Страшные мобы</strong><br>Теневой Сталкер, призрачные твари с пугающим ИИ, которые охотятся в темноте и шепчут твоё имя.</div>
+                <div class="feature-block"><span class="horror-symbol">🕸️</span><br><strong>Шейдеры</strong><br>Густой туман, кроваво-красный свет, мерцающие тени и реалистичные эффекты, усиливающие ужас.</div>
+                <div class="feature-block"><span class="horror-symbol">🌑</span><br><strong>Квесты</strong><br>Заброшенные деревни с ловушками, мрачной историей и тайнами, которые ты должен раскрыть.</div>
+                <div class="feature-block"><span class="horror-symbol">👁️‍🗨️</span><br><strong>Звуки</strong><br>Шёпот духов, скрипы деревьев, шаги невидимых существ и зловещие звуки, пробирающие до костей.</div>
+                <div class="feature-block"><span class="horror-symbol">⚡</span><br><strong>Оптимизация</strong><br>Работает на любом ПК с Minecraft 1.16.5+, обеспечивая стабильность даже в самых мрачных уголках.</div>
+            </div>
             <div class="carousel">
                 <div class="carousel-images">
                     <img src="./img1.png" alt="Заброшенная деревня NightmareCraft">
@@ -330,12 +315,9 @@
             <div class="text-lg md:text-xl mt-12 max-w-2xl mx-auto text-center">
                 <h4 class="text-xl mb-6">Как установить:</h4>
                 <ol class="custom-list text-center">
-                    <li><span class="blood-drop-sentence">Кликни кнопку выше — откроется папка на Mega в новой вкладке.</span></li>
-                    <li><span class="blood-drop-sentence">Найди <strong>NightmareCraft.zip</strong>, нажми «Скачать».</span></li>
-                    <li><span class="blood-drop-sentence">Открой папку «Загрузки» и найди архив.</span></li>
-                    <li><span class="blood-drop-sentence">Разархивируй с паролем <strong>1337</strong> (WinRAR/7-Zip).</span></li>
-                    <li><span class="blood-drop-sentence">Запусти <strong>setup-mode v1.2.7</strong> и следуй инструкциям.</span></li>
-                    <li><span class="blood-drop-sentence">Если SmartScreen ругается, нажми 'Подробнее' и выполни загрузку в любом случае.</span></li>
+                    <li>Кликни кнопку выше — откроется папка на Mega в новой вкладке.</li>
+                    <li>Найди <strong>NightmareCraft.zip</strong>, нажми «Скачать».</li>
+                    <li>Открой папку «Загрузки» и найди архив.</li>
                 </ol>
             </div>
         </div>
