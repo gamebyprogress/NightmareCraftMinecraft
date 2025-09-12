@@ -91,14 +91,30 @@
             fill: #ff6666;
         }
         nav a {
+            position: relative;
             transition: color 0.3s ease, transform 0.3s ease;
             text-transform: uppercase;
             font-weight: 900;
             font-size: 1.5rem;
+            color: #e0e0e0;
+            text-decoration: none;
         }
         nav a:hover {
             color: #ff6666;
             transform: translateY(-1px);
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ff6666;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
         header, section, footer {
             position: relative;
@@ -106,13 +122,14 @@
             background: radial-gradient(circle at center, rgba(20, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeIn 1.5s ease forwards;
+            animation: fadeIn 0.8s ease forwards;
         }
-        section:nth-child(2) { animation-delay: 0.3s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
-        section:nth-child(4) { animation-delay: 0.9s; }
-        section:nth-child(5) { animation-delay: 1.2s; }
-        footer { animation-delay: 1.5s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
+        section:nth-child(6) { animation-delay: 1.0s; }
+        footer { animation-delay: 1.2s; }
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -150,27 +167,33 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: linear-gradient(135deg, #800000, rgba(76, 44, 44, 0.7));
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #cc3333, #800000);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 10;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 15px rgba(128, 0, 0, 0.5);
         }
         .carousel-btn:hover {
-            transform: scale(1.1) translateY(-50%);
-            box-shadow: 0 8px 25px rgba(128, 0, 0, 0.6);
+            transform: scale(1.2) translateY(-50%);
+            box-shadow: 0 8px 25px rgba(128, 0, 0, 0.7);
+            background: linear-gradient(135deg, #ff6666, #cc3333);
         }
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
+        .carousel-btn.prev { left: -60px; }
+        .carousel-btn.next { right: -60px; }
         .carousel-btn svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: #fff;
+            transition: transform 0.3s ease;
+        }
+        .carousel-btn:hover svg {
+            transform: scale(1.1);
         }
         .custom-list li {
             position: relative;
@@ -252,8 +275,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 600px; /* Уменьшил ширину блока */
-            margin: 0 auto; /* Центрирование блока */
+            width: 600px;
+            margin: 0 auto;
         }
         #review-text {
             position: static;
@@ -264,6 +287,56 @@
             padding: 0;
             transition: opacity 0.5s ease;
         }
+        .faq-item {
+            background: linear-gradient(135deg, rgba(28, 0, 0, 0.9), rgba(76, 44, 44, 0.7));
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(204, 51, 51, 0.5);
+        }
+        .faq-question {
+            font-family: 'Creepster', cursive;
+            color: #ff6666;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .faq-answer {
+            display: none;
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .faq-answer.active {
+            display: block;
+        }
+        .faq-answer ol {
+            text-align: left;
+            margin-left: 20px;
+            list-style-type: decimal;
+        }
+        .faq-answer ol li {
+            margin-bottom: 8px;
+        }
+        .faq-answer code {
+            background: rgba(255, 102, 102, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ff6666;
+            font-family: 'Roboto', sans-serif;
+        }
+        .faq-answer a {
+            color: #ff6666;
+            text-decoration: underline;
+        }
+        .faq-answer a:hover {
+            color: #ff9999;
+        }
     </style>
 </head>
 <body>
@@ -271,9 +344,10 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-3xl md:text-4xl">NightmareCraft</h1>
             <nav class="space-x-6">
-                <a href="#about" class="text-lg hover:text-red-500">О СБОРКЕ</a>
-                <a href="#download" class="text-lg hover:text-red-500">СКАЧАТЬ</a>
-                <a href="#contact" class="text-lg hover:text-red-500">КОНТАКТЫ</a>
+                <a href="#about" class="text-lg">О СБОРКЕ</a>
+                <a href="#download" class="text-lg">СКАЧАТЬ</a>
+                <a href="#faq" class="text-lg">FAQ</a>
+                <a href="#contact" class="text-lg">КОНТАКТЫ</a>
             </nav>
         </div>
     </header>
@@ -350,7 +424,7 @@
             <div class="mt-12">
                 <h4 class="text-2xl mb-6">Отзывы игроков</h4>
                 <div id="reviews" class="stat-card">
-                    <p id="review-text" class="text-lg">Прошёл квест в деревне, сюжет зацепил, жду больше — DmitryR</p>
+                    <p id="review-text" class="text-lg">Квесты в деревне — огонь, аж мурашки от сюжета! — RiftWalker</p>
                 </div>
             </div>
         </div>
@@ -360,18 +434,77 @@
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-12">Скачай <span class="text-red-500">NightmareCraft</span></h3>
             <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-center">
-                Хватит ли у тебя смелости бросить вызов тьме?
-                Нажми и шагни в мир, где каждый шаг — это риск!
+                Хватит ли у тебя смелости бросить вызов тьме? Нажми и шагни в мир, где каждый шаг — это риск!
             </p>
             <a href="https://www.mediafire.com/file/3otmv2kz7houxgs/nightmarecraft.zip/file" rel="noopener noreferrer" class="download-btn download-section">Скачать сборку (ZIP)</a>
-            <p class="password-text mt-12 text-center">Пароль от архива: 3007</p>
-            <div class="text-3xl md:text-4xl mt-12 max-w-2xl mx-auto text-center">
-                <h4 class="text-2xl mb-6">Как установить:</h4>
-                <ol class="custom-list text-center">
-                    <li>Нажми на кнопку выше — откроется папка на Mega в новой вкладке браузера, где хранится сборка</li>
-                    <li>Найди файл NightmareCraft.zip в списке, нажми «Скачать» и подожди, пока загрузка начнётся</li>
-                    <li>Открой папку «Загрузки» на своём компьютере, найди скачанный архив и распакуй его в удобное место</li>
-                </ol>
+            <p class="password-text mt-12 text-center">Пароль от архива: <strong>3007</strong></p>
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 text-center">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl md:text-4xl mb-12">Часто задаваемые <span class="text-red-500">вопросы</span></h3>
+            <div class="max-w-3xl mx-auto">
+                <div class="faq-item">
+                    <div class="faq-question">На какой версии Minecraft работает NightmareCraft?</div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Сборка работает на <strong>Minecraft 1.16.5</strong> и выше.</li>
+                            <li>Проверьте версию в <strong>лаунчере</strong> (официальном или TLauncher).</li>
+                            <li>Обновите игру, если версия не соответствует.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Почему архив запаролен?</div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Архив <code>NightmareCraft.zip</code> защищён паролем <strong>3007</strong> для безопасности.</li>
+                            <li>Используйте <strong>WinRAR</strong> или <strong>7-Zip</strong> для распаковки.</li>
+                            <li>Скачивайте только с <a href="#download">официальной ссылки</a>.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Мой антивирус блокирует архив, что делать?</div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Антивирус может блокировать <code>NightmareCraft.zip</code> из-за модов.</li>
+                            <li>При предупреждении <strong>SmartScreen</strong> выберите <strong>Подробнее</strong> → <strong>Выполнить</strong>.</li>
+                            <li>Добавьте архив в <strong>исключения антивируса</strong>.</li>
+                            <li>Скачивайте с <a href="#download">официальной ссылки</a>.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли играть с друзьями?</div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li><strong>NightmareCraft</strong> поддерживает мультиплеер.</li>
+                            <li>Все игроки должны установить сборку (см. <strong>Как установить</strong>).</li>
+                            <li>Настройте сервер с <strong>Forge 1.16.5</strong>, добавив моды.</li>
+                            <li>Подробности в <a href="https://discord.gg/nightmarecraft">Discord</a>.</li>
+                            <li>Играйте на публичных серверах через <a href="https://discord.gg/nightmarecraft">Discord</a>.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Как установить NightmareCraft?</div>
+                    <div class="faq-answer">
+                        <ol>
+                            <li>Нажмите <strong>Скачать сборку</strong> в <a href="#download">разделе Скачать</a>.</li>
+                            <li>Перенесите <code>NightmareCraft.zip</code> на <strong>рабочий стол</strong>.</li>
+                            <li>Распакуйте архив паролем <strong>3007</strong> через <strong>WinRAR</strong> или <strong>7-Zip</strong>.</li>
+                            <li>Запустите <code>setup-mods-v1.2.7.exe</code> и следуйте инструкциям.</li>
+                            <li>При <strong>SmartScreen</strong> выберите <strong>Подробнее</strong> → <strong>Выполнить</strong>.</li>
+                            <li>Установите <strong>Minecraft Forge</strong> для вашей версии с <a href="https://files.minecraftforge.net/">Forge</a> или через <strong>TLauncher</strong>.</li>
+                            <li>Проверьте моды: <strong>Win + R</strong> → <code>%appdata%\.minecraft</code> → папка <code>mods</code>.</li>
+                            <li>Запустите <strong>Minecraft</strong>, выберите профиль <strong>Forge</strong>, проверьте моды в меню <strong>Моды</strong>.</li>
+                            <li>Создайте мир и играйте!</li>
+                            <li>Проблемы? Пишите в <a href="https://discord.gg/nightmarecraft">Discord</a>.</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -380,8 +513,7 @@
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-8">Связаться с <span class="text-red-500">нами</span></h3>
             <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-center">
-                Проблемы или идеи?
-                Мы всегда на связи!
+                Проблемы или идеи? Мы всегда на связи!
             </p>
             <div class="flex justify-center flex-wrap gap-6">
                 <a href="mailto:support@nightmarecraft.com" class="contact-link">
@@ -449,6 +581,12 @@
             updateCarousel();
         });
 
+        // Автоматическая смена слайдов
+        setInterval(() => {
+            currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+            updateCarousel();
+        }, 5000);
+
         // Удаление мигающей строки после анимации текста
         const heroText = document.querySelector('#hero h2');
         heroText.addEventListener('animationend', () => {
@@ -477,16 +615,19 @@
 
         // Отзывы
         const reviews = [
-            { text: "Прошёл квест в деревне, сюжет зацепил, жду больше — DmitryR" },
-            { text: "Теневой Сталкер реально пугает, особенно ночью в лесу — IvanP" },
-            { text: "Шейдеры и звуки создают такой трип, как в хоррор-фильме — MariaS" },
-            { text: "Звуки добавляют реальности, аж мурашки по коже — OlgaV" },
-            { text: "Играю уже неделю, не могу остановиться — PavelG" },
-            { text: "Очень крутой опыт, атмосфера держит в напряжении — AlexM" },
-            { text: "Отлично оптимизировано, тянет даже на старом ноуте — ElenaT" },
-            { text: "Квесты интересные, хочется разбираться дальше — SergeiL" },
-            { text: "Графика впечатляет, особенно шейдеры на закате — KatyaN" },
-            { text: "Невероятно атмосферно, играл до утра и не мог оторваться — AnnaK" }
+            { text: "Квесты в деревне — огонь, аж мурашки от сюжета! — RiftWalker" },
+            { text: "Теневой Сталкер напугал так, что я кричал в ночи! — ❖VoidEcho❖" },
+            { text: "Шейдеры создают атмосферу, как в хоррор-фильме! — Pixel_Shade" },
+            { text: "Звуки такие жуткие, аж сердце замирает! — FrostEdge77" },
+            { text: "Квесты затянули, прошёл всю ночь напролёт! — LUNARdrift" },
+            { text: "Текстуры и мобы — это просто кошмар, в хорошем смысле! — xX_NeonGhost_Xx" },
+            { text: "Играю с друзьями, все в восторге от ужаса! — GrimSpecter." },
+            { text: "Шейдеры на закате — это что-то нереальное! — SilentR1ft" },
+            { text: "Моды тянет даже на моём старом ПК, круто! — Nova-Skull" },
+            { text: "Сюжет квестов реально держит в напряжении! — EmberWingz" },
+            { text: "Звуки шагов в лесу — я чуть не выпал из кресла! — SurgeStorm__" },
+            { text: "Атмосфера топ, как будто в фильме ужасов! — MysticTrace♥" },
+            { text: "Оптимизация на уровне, летает без лагов! — 0xDarkHelix" }
         ];
         let reviewIndex = 0;
         const reviewText = document.getElementById('review-text');
@@ -505,14 +646,14 @@
 
         setInterval(updateReview, 5000);
         window.addEventListener('load', animateStats);
+
+        // FAQ раскрытие/скрытие
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
