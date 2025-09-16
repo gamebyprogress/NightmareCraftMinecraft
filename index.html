@@ -120,21 +120,6 @@
             position: relative;
             z-index: 2;
             background: radial-gradient(circle at center, rgba(20, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards;
-        }
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.4s; }
-        section:nth-child(4) { animation-delay: 0.6s; }
-        section:nth-child(5) { animation-delay: 0.8s; }
-        section:nth-child(6) { animation-delay: 1.0s; }
-        footer { animation-delay: 1.2s; }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         .password-text {
             font-weight: bold;
@@ -204,15 +189,15 @@
         .custom-list li:before {
             content: none;
         }
-        .horror-symbol {
+        .horror-icon {
             display: inline-block;
             margin-right: 5px;
-            font-size: 1.5em;
-            color: #cc3333;
+            width: 32px;
+            height: 32px;
         }
         .feature-block {
             background: linear-gradient(135deg, rgba(28, 0, 0, 0.9), rgba(76, 44, 44, 0.7));
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
             text-align: center;
@@ -289,11 +274,12 @@
         }
         .faq-item {
             background: linear-gradient(135deg, rgba(28, 0, 0, 0.9), rgba(76, 44, 44, 0.7));
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
         .faq-item:hover {
             transform: translateY(-5px);
@@ -304,16 +290,31 @@
             color: #ff6666;
             font-size: 1.5rem;
             margin-bottom: 10px;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.8rem;
+            color: #ff6666;
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
         }
         .faq-answer {
-            display: none;
+            max-height: 0;
+            overflow: hidden;
             font-size: 1rem;
             color: #e0e0e0;
             line-height: 1.6;
+            transition: max-height 0.5s ease, padding 0.5s ease;
         }
         .faq-answer.active {
-            display: block;
+            max-height: 600px;
+            padding: 10px 0;
         }
         .faq-answer ol {
             text-align: left;
@@ -337,6 +338,11 @@
         .faq-answer a:hover {
             color: #ff9999;
         }
+        .icons8-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -356,8 +362,7 @@
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-5xl md:text-7xl mb-12">NightmareCraft</h2>
             <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto text-center">
-                Окунись в мрачный лес Minecraft, где каждый шорох скрывает ужасы, а тени шепчут тайны.
-                Готов ли ты встретиться с кошмарами лицом к лицу?
+                Окунись в мрачный лес Minecraft, где каждый шорох скрывает ужасы, а тени шепчут тайны. Готов ли ты встретиться с кошмарами?
             </p>
             <a href="#download" class="download-btn hero-btn">
                 <span class="download-text">Скачать сборку</span>
@@ -369,17 +374,34 @@
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-8">Погрузись в <span class="text-red-500">NightmareCraft</span></h3>
             <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto text-center">
-                NightmareCraft — твой пропуск в безумный мир ужаса и адреналина, где каждая ночь в Minecraft превращается в испытание.
-                Версия 1.2.7 раскрывает тёмные тайны заброшенных деревень и кровавых теней, заставляя сердце биться чаще.
+                NightmareCraft — твой пропуск в мир ужаса, где каждая ночь в Minecraft — испытание. Версия 1.2.7 раскрывает тёмные тайны и страх.
             </p>
             <h4 class="text-2xl mb-4">Что ждёт в версии 1.2.7:</h4>
             <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-16">
-                <div class="feature-block"><span class="horror-symbol">☠</span><br><strong>Жуткие текстуры</strong><br>Кровавые пятна, треснувшие стены, мрак, проникающий в душу, и зловещие узоры, создающие атмосферу страха.</div>
-                <div class="feature-block"><span class="horror-symbol">👻</span><br><strong>Страшные мобы</strong><br>Теневой Сталкер, призрачные твари с пугающим ИИ, которые охотятся в темноте и шепчут твоё имя.</div>
-                <div class="feature-block"><span class="horror-symbol">🕸️</span><br><strong>Шейдеры</strong><br>Густой туман, кроваво-красный свет, мерцающие тени и реалистичные эффекты, усиливающие ужас.</div>
-                <div class="feature-block"><span class="horror-symbol">🌑</span><br><strong>Квесты</strong><br>Заброшенные деревни с ловушками, мрачной историей и тайнами, которые ты должен раскрыть.</div>
-                <div class="feature-block"><span class="horror-symbol">👁️‍🗨️</span><br><strong>Звуки</strong><br>Шёпот духов, скрипы деревьев, шаги невидимых существ и зловещие звуки, пробирающие до костей.</div>
-                <div class="feature-block"><span class="horror-symbol">⚡</span><br><strong>Оптимизация</strong><br>Работает на любом ПК с Minecraft 1.16.5+, обеспечивая стабильность даже в самых мрачных уголках.</div>
+                <div class="feature-block">
+                    <img src="https://img.icons8.com/ios-filled/50/cc3333/blood-sample.png" alt="Blood sample icon" class="icons8-icon mx-auto">
+                    <strong>Жуткие текстуры</strong><br>Кровь и мрак нагнетают страх.
+                </div>
+                <div class="feature-block">
+                    <img src="https://img.icons8.com/ios-filled/50/cc3333/ghost.png" alt="Ghost icon" class="icons8-icon mx-auto">
+                    <strong>Страшные мобы</strong><br>Теневой Сталкер охотится в ночи.
+                </div>
+                <div class="feature-block">
+                    <img src="https://img.icons8.com/ios-filled/50/cc3333/fog-lamp.png" alt="Fog lamp icon" class="icons8-icon mx-auto">
+                    <strong>Шейдеры</strong><br>Туман и красный свет усиливают ужас.
+                </div>
+                <div class="feature-block">
+                    <img src="https://img.icons8.com/ios-filled/50/cc3333/ruins.png" alt="Ruins icon" class="icons8-icon mx-auto">
+                    <strong>Квесты</strong><br>Заброшенные деревни с ловушками и тайнами.
+                </div>
+                <div class="feature-block">
+                    <img src="https://img.icons8.com/ios-filled/50/cc3333/audio-wave.png" alt="Audio wave icon" class="icons8-icon mx-auto">
+                    <strong>Звуки</strong><br>Шёпот и шаги пробирают до костей.
+                </div>
+                <div class="feature-block">
+                    <img src="https://img.icons8.com/ios-filled/50/cc3333/speed.png" alt="Speed icon" class="icons8-icon mx-auto">
+                    <strong>Оптимизация</strong><br>Стабильность на любом ПК.
+                </div>
             </div>
             <div class="carousel">
                 <div class="carousel-images">
@@ -409,7 +431,7 @@
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-4xl mx-auto">
                 <div class="stat-card">
-                    <div class="stat-number" data-target="1187">0</div>
+                    <div class="stat-number" id="active-players">0</div>
                     <p class="text-lg mt-2">Активных игроков</p>
                 </div>
                 <div class="stat-card">
@@ -434,7 +456,7 @@
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-12">Скачай <span class="text-red-500">NightmareCraft</span></h3>
             <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-center">
-                Хватит ли у тебя смелости бросить вызов тьме? Нажми и шагни в мир, где каждый шаг — это риск!
+                Хватит смелости бросить вызов тьме? Нажми и шагни в мир, где каждый шаг — риск!
             </p>
             <a href="https://www.mediafire.com/file/nqgkvh7ji30nl23/nightmarecraft.zip/file" rel="noopener noreferrer" class="download-btn download-section">Скачать сборку (ZIP)</a>
             <p class="password-text mt-12 text-center">Пароль от архива: <strong>3007</strong></p>
@@ -581,7 +603,6 @@
             updateCarousel();
         });
 
-        // Автоматическая смена слайдов
         setInterval(() => {
             currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
             updateCarousel();
@@ -593,14 +614,29 @@
             heroText.style.borderRight = 'none';
         });
 
+        // Функция для анимации счетчика
+        function animateCount(element, start, end, duration) {
+            let range = end - start;
+            let current = start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let timer = setInterval(() => {
+                current += increment;
+                element.textContent = current;
+                if (current === end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
         // Анимация счетчика статистики
         function animateStats() {
-            const stats = document.querySelectorAll('.stat-number');
+            const stats = document.querySelectorAll('.stat-number:not(#active-players)');
             stats.forEach(stat => {
                 const target = +stat.getAttribute('data-target');
                 let count = 0;
                 const duration = 2000;
-                const step = target / (duration / 16); // ~60 FPS
+                const step = target / (duration / 16);
                 const interval = setInterval(() => {
                     count += step;
                     if (count >= target) {
@@ -612,6 +648,18 @@
                 }, 16);
             });
         }
+
+        // Динамическое изменение числа активных игроков с анимацией
+        const activePlayers = document.getElementById('active-players');
+        let playerCount = 1187;
+        function updatePlayerCount() {
+            const oldCount = playerCount;
+            const change = [2, -2, 5, -5, 10, -10][Math.floor(Math.random() * 6)];
+            playerCount = Math.max(1100, Math.min(1250, playerCount + change));
+            animateCount(activePlayers, oldCount, playerCount, 1000);
+        }
+        animateCount(activePlayers, 0, playerCount, 1500); // Initial animation
+        setInterval(updatePlayerCount, 10000);
 
         // Отзывы
         const reviews = [
@@ -648,14 +696,19 @@
         window.addEventListener('load', animateStats);
 
         // FAQ раскрытие/скрытие
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.classList.toggle('active');
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').classList.remove('active');
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('.faq-answer').classList.add('active');
+                }
             });
         });
     </script>
 </body>
 </html>
-
-
