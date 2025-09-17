@@ -8,6 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Roboto', sans-serif;
             background: url('https://img3.akspic.ru/previews/2/5/3/8/2/128352/128352-videoigra-okruzhayushchaya_sreda-televideniye-les-utro-x750.jpg') no-repeat center center fixed;
@@ -61,7 +64,6 @@
             padding: 18px 48px;
             min-width: 240px;
             box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
-            animation: bloodPulse 2s ease infinite;
         }
         .download-btn.hero-btn:hover {
             transform: translateY(-5px);
@@ -74,23 +76,12 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            animation: bloodPulse 2s ease infinite;
+            box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
             width: 220px;
         }
         .download-btn.download-section-smaller:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 10px rgba(255, 102, 102, 0.6);
-        }
-        @keyframes bloodPulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(204, 51, 51, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 10px 4px rgba(255, 102, 102, 0.3);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(204, 51, 51, 0.3);
-            }
         }
         .contact-link {
             padding: 12px 24px;
@@ -710,21 +701,26 @@
     </footer>
 
     <script>
-        // Плавная прокрутка и установка активной ссылки при клике
-        const navLinks = document.querySelectorAll('nav a');
-        const sections = document.querySelectorAll('section');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
+        // Плавная прокрутка для всех якорей
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                const targetSection = document.querySelector(this.getAttribute('href'));
-                targetSection.scrollIntoView({ behavior: 'smooth' });
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
         // IntersectionObserver для определения активной секции при прокрутке
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
         const observer = new IntersectionObserver((entries) => {
             let closestSection = null;
             let minDistance = Infinity;
