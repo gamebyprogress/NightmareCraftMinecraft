@@ -164,8 +164,7 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
         .nav-links {
-            display: flex;
-            flex-direction: row;
+            /* Без стилей по умолчанию */
         }
         header, section, footer {
             position: relative;
@@ -432,6 +431,12 @@
             height: 32px;
             margin-bottom: 8px;
         }
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+            }
+        }
         @media (max-width: 768px) {
             .grid-cols-3 {
                 grid-template-columns: 1fr;
@@ -476,6 +481,10 @@
                 max-width: 300px;
                 font-size: 1.2rem;
                 padding: 10px 20px;
+                margin: 0 auto; /* Центрирование кнопок */
+            }
+            #contact .flex {
+                justify-content: center; /* Центрирование flex-контейнера */
             }
             #reviews {
                 width: 100%;
@@ -495,7 +504,7 @@
                 display: block;
             }
             .nav-links {
-                display: none;
+                display: none !important; /* Скрыто по умолчанию на мобильных */
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
@@ -507,7 +516,7 @@
                 z-index: 15;
             }
             .nav-links.active {
-                display: flex;
+                display: flex !important; /* Показываем при активации */
             }
             nav a {
                 font-size: 1.3rem;
@@ -589,7 +598,7 @@
                     <span></span>
                     <span></span>
                 </div>
-                <nav class="nav-links space-x-6 flex flex-col md:flex-row items-center">
+                <nav class="nav-links flex flex-col md:flex-row items-center">
                     <a href="#about" class="text-lg">О СБОРКЕ</a>
                     <a href="#download" class="text-lg">СКАЧАТЬ</a>
                     <a href="#faq" class="text-lg">FAQ</a>
@@ -723,74 +732,6 @@
         </div>
     </section>
 
-    <section id="faq" class="py-16 text-center">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl md:text-4xl mb-12">Часто задаваемые <span class="text-red-500">вопросы</span></h3>
-            <div class="max-w-3xl mx-auto">
-                <div class="faq-item">
-                    <div class="faq-question">На какой версии Minecraft работает NightmareCraft?</div>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Сборка работает на <strong>Minecraft 1.16.5</strong> и выше.</li>
-                            <li>Проверьте версию в <strong>лаунчере</strong> (официальном или TLauncher).</li>
-                            <li>Обновите игру, если версия не соответствует.</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Почему архив запаролен?</div>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Архив <code>NightmareCraft.zip</code> защищён паролем <strong>3007</strong> для безопасности.</li>
-                            <li>Используйте <strong>WinRAR</strong> или <strong>7-Zip</strong> для распаковки.</li>
-                            <li>Скачивайте только с <a href="#download">официальной ссылки</a>.</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Мой антивирус блокирует архив, что делать?</div>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Антивирус может блокировать <code>NightmareCraft.zip</code> из-за модов.</li>
-                            <li>При предупреждении <strong>SmartScreen</strong> выберите <strong>Подробнее</strong> → <strong>Выполнить</strong>.</li>
-                            <li>Добавьте архив в <strong>исключения антивируса</strong>.</li>
-                            <li>Скачивайте с <a href="#download">официальной ссылки</a>.</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Можно ли играть с друзьями?</div>
-                    <div class="faq-answer">
-                        <ol>
-                            <li><strong>NightmareCraft</strong> поддерживает мультиплеер.</li>
-                            <li>Все игроки должны установить сборку (см. <strong>Как установить</strong>).</li>
-                            <li>Настройте сервер с <strong>Forge 1.16.5</strong>, добавив моды.</li>
-                            <li>Подробности в <a href="https://discord.gg/nightmarecraft">Discord</a>.</li>
-                            <li>Играйте на публичных серверах через <a href="https://discord.gg/nightmarecraft">Discord</a>.</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Как установить NightmareCraft?</div>
-                    <div class="faq-answer">
-                        <ol>
-                            <li>Нажмите <strong>Скачать сборку</strong> в <a href="#download">разделе Скачать</a>.</li>
-                            <li>Перенесите <code>NightmareCraft.zip</code> на <strong>рабочий стол</strong>.</li>
-                            <li>Распакуйте архив паролем <strong>3007</strong> через <strong>WinRAR</strong> или <strong>7-Zip</strong>.</li>
-                            <li>Запустите <code>setup-mode.exe</code> и следуйте инструкциям.</li>
-                            <li>При <strong>SmartScreen</strong> выберите <strong>Подробнее</strong> → <strong>Выполнить</strong>.</li>
-                            <li>Установите <strong>Minecraft Forge</strong> для вашей версии с <a href="https://files.minecraftforge.net/">Forge</a> или через <strong>TLauncher</strong>.</li>
-                            <li>Проверьте моды: <strong>Win + R</strong> → <code>%appdata%\.minecraft</code> → папка <code>mods</code>.</li>
-                            <li>Запустите <strong>Minecraft</strong>, выберите профиль <strong>Forge</strong>, проверьте моды в меню <strong>Моды</strong>.</li>
-                            <li>Создайте мир и играйте!</li>
-                            <li>Проблемы? Пишите в <a href="https://discord.gg/nightmarecraft">Discord</a>.</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="py-16 text-center">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl md:text-4xl mb-8">Связаться с <span class="text-red-500">нами</span></h3>
@@ -885,12 +826,34 @@
 
         sections.forEach(section => observer.observe(section));
 
-        // Бургер-меню
+        // Бургер-меню: инициализация и управление
         const burgerMenu = document.getElementById('burger-menu');
         const navLinksContainer = document.querySelector('.nav-links');
+
+        // Функция для управления видимостью меню
+        function toggleMenuVisibility() {
+            if (window.innerWidth <= 768) {
+                navLinksContainer.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                console.log('Menu hidden on mobile (width <= 768px)');
+            } else {
+                navLinksContainer.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                console.log('Menu reset for desktop (width > 768px)');
+            }
+        }
+
+        // При загрузке страницы
+        window.addEventListener('load', toggleMenuVisibility);
+
+        // При изменении размера окна
+        window.addEventListener('resize', toggleMenuVisibility);
+
+        // Переключение бургер-меню
         burgerMenu.addEventListener('click', () => {
-            burgerMenu.classList.toggle('active');
+            const isActive = burgerMenu.classList.toggle('active');
             navLinksContainer.classList.toggle('active');
+            console.log(`Burger menu toggled: ${isActive ? 'opened' : 'closed'}`);
         });
 
         // Закрытие бургер-меню при клике на ссылку
@@ -898,6 +861,7 @@
             link.addEventListener('click', () => {
                 burgerMenu.classList.remove('active');
                 navLinksContainer.classList.remove('active');
+                console.log('Menu closed on link click');
             });
         });
 
