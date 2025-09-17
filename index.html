@@ -61,7 +61,7 @@
             padding: 18px 48px;
             min-width: 240px;
             box-shadow: 0 4px 15px rgba(204, 51, 51, 0.3);
-            animation: bloodPulse 2s ease-in-out infinite;
+            animation: bloodPulse 2s ease infinite;
         }
         .download-btn.hero-btn:hover {
             transform: translateY(-5px);
@@ -74,7 +74,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            animation: bloodPulse 2s ease-in-out infinite;
+            animation: bloodPulse 2s ease infinite;
             width: 220px;
         }
         .download-btn.download-section-smaller:hover {
@@ -83,16 +83,13 @@
         }
         @keyframes bloodPulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(204, 51, 51, 0.4);
-                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(204, 51, 51, 0.3);
             }
             50% {
-                box-shadow: 0 0 12px 6px rgba(255, 102, 102, 0.4);
-                transform: scale(1.02);
+                box-shadow: 0 0 10px 4px rgba(255, 102, 102, 0.3);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(204, 51, 51, 0.4);
-                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(204, 51, 51, 0.3);
             }
         }
         .contact-link {
@@ -172,12 +169,10 @@
             flex: 0 0 100%;
             object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(204, 51, 51, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
         .carousel-images img:hover {
             transform: scale(1.05);
-            box-shadow: 0 12px 30px rgba(204, 51, 51, 0.4);
         }
         .carousel-btn {
             position: absolute;
